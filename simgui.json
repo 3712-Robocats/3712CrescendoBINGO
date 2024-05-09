@@ -1,0 +1,35 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Auto Selection": "String Chooser",
+      "/SmartDashboard/Field": "Field2d",
+      "/SmartDashboard/Pigeon 2 (v6) [5]": "Gyro"
+    }
+  },
+  "NetworkTables": {
+    "transitory": {
+      "PathPlanner": {
+        "open": true
+      },
+      "SmartDashboard": {
+        "Auto Chooser": {
+          "open": false,
+          "string[]##v_/SmartDashboard/Auto Chooser/options": {
+            "open": false
+          }
+        },
+        "Auto Selection": {
+          "open": true,
+          "string[]##v_/SmartDashboard/Auto Selection/options": {
+            "open": true
+          }
+        },
+        "open": true
+      }
+    }
+  },
+  "NetworkTables Info": {
+    "visible": true
+  }
+}
