@@ -13,11 +13,14 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Hook;
 import frc.robot.subsystems.Loader;
+import frc.robot.subsystems.MoveAndReturn;
 import frc.robot.commands.swervedrive.superStructure.AimAtTarget;
 import frc.robot.commands.swervedrive.superStructure.ArmCommand;
 import frc.robot.commands.swervedrive.superStructure.DetectAprilTagsCommand;
 import frc.robot.commands.swervedrive.superStructure.HookCommand;
 import frc.robot.commands.swervedrive.superStructure.LoaderCommand;
+import frc.robot.commands.swervedrive.superStructure.Move;
+import frc.robot.commands.swervedrive.superStructure.MoveAndReturnCommand;
 import frc.robot.commands.swervedrive.superStructure.shootLoadCommand;
 import frc.robot.subsystems.Shooter;
 import frc.robot.commands.swervedrive.superStructure.shooterCommand;
@@ -47,6 +50,7 @@ public class RobotContainer
   public Shooter shooter = new Shooter();
   public Loader loader = new Loader();
   public Hook hook = new Hook();
+  public MoveAndReturn moveAndReturn = new MoveAndReturn(drivebase);
 
   public RobotContainer()
   {
@@ -86,6 +90,10 @@ public class RobotContainer
     new JoystickButton(driverXbox, XboxController.Button.kY.value).onTrue(new HookCommand(hook, 360));
     new JoystickButton(driverXbox, XboxController.Button.kX.value).onTrue(new HookCommand(hook, 0));
     resetHook.onTrue(new HookCommand(hook, -360));
+
+    new JoystickButton(shooterXbox, XboxController.Button.kStart.value).onTrue(new Move(drivebase));
+
+    new JoystickButton(driverXbox, XboxController.Button.kStart.value).onTrue(new MoveAndReturnCommand(moveAndReturn, 1, true));
 
     new JoystickButton(shooterXbox, XboxController.Button.kY.value).onTrue(new ArmCommand(m_arm, -12));
     new JoystickButton(shooterXbox, XboxController.Button.kB.value).onTrue(new ArmCommand(m_arm, -7.0));
